@@ -1,0 +1,28 @@
+link(rel="stylesheet", href="/static/css/my.css")
+block content
+   
+a.car-item
+    a(href="/cars/" + model.id)
+        if model.imgUrl
+            img(width=100 src=model.imgUrl)
+        else
+            //- img(width=100 src="http://librosebooks.org/img/xggS7:XXBBB.vVq0xE.W8C.ClXCi0EVXWVgVu8vXS180jWgXWVWxiXtXECVviXc9nl9nnXF0aP3iVkcc9290n30Mi9ak302PtcMiF9XEXCXECVvi_ttM9_t_M2M2t.fSv.png")
+    ul.list-group-item
+            li(class="w3-container w3-green")
+                a=model.Model
+            | 
+            li
+                a=model.Mileage
+            | 
+            li
+                a=model.Color
+            | 
+            li
+                a=model.Price
+            | 
+            li
+                a=model.Year
+            | 
+            li
+                a=model.Description
+                        
