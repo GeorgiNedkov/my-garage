@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "node ./dist/server.js"
+        "start": "node ./dist/server.js",
+         "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
+        "watch:serve": "ts-node --inspect src/server.ts"
     },
     "engines": {
         "node": "7.6.0"

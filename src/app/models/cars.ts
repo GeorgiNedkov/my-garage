@@ -1,6 +1,6 @@
 export class Car {
     id: string;
-    Model: string;
+    Makes: string;
     Mileage: number;
     Color: string;
     Price: number;
@@ -8,9 +8,9 @@ export class Car {
     Description: string;
     imgUrl: string;
 
-    constructor(id: string, Model: string, Mileage: number, Color: string, Price: number, Year: number, Description: string, imgUrl: string) {
+    constructor(id: string, Makes: string, Mileage: number, Color: string, Price: number, Year: number, Description: string, imgUrl: string) {
         this.id = id;
-        this.Model = Model;
+        this.Makes = Makes;
         this.Mileage = Mileage;
         this.Color = Color;
         this.Price = Price;
@@ -21,7 +21,7 @@ export class Car {
 
     static toModel(obj: Car): any {
         return {
-            Model: obj.Model,
+            Makes: obj.Makes,
             Mileage: obj.Mileage,
             Color: obj.Color,
             Price: obj.Price,
@@ -33,13 +33,13 @@ export class Car {
 
     static fromModel(model: any): Car {
         let id = model.id || model._id;
-        let Model = model.Model;
+        let Makes = model.Makes;
         let Mileage = model.Mileage;
         let Color = model.Color;
         let Price = model.Price;
         let Year = model.Year;
         let Description = model.Description;
         let imgUrl = model.imgUrl;
-        return new Car(id, Model, Mileage, Color, Price, Year, Description, imgUrl);
+        return new Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl);
     }
 }

@@ -1,9 +1,9 @@
 "use strict";
 exports.__esModule = true;
 var Car = (function () {
-    function Car(id, Model, Mileage, Color, Price, Year, Description, imgUrl) {
+    function Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl) {
         this.id = id;
-        this.Model = Model;
+        this.Makes = Makes;
         this.Mileage = Mileage;
         this.Color = Color;
         this.Price = Price;
@@ -13,7 +13,7 @@ var Car = (function () {
     }
     Car.toModel = function (obj) {
         return {
-            Model: obj.Model,
+            Makes: obj.Makes,
             Mileage: obj.Mileage,
             Color: obj.Color,
             Price: obj.Price,
@@ -24,14 +24,14 @@ var Car = (function () {
     };
     Car.fromModel = function (model) {
         var id = model.id || model._id;
-        var Model = model.Model;
+        var Makes = model.Makes;
         var Mileage = model.Mileage;
         var Color = model.Color;
         var Price = model.Price;
         var Year = model.Year;
         var Description = model.Description;
         var imgUrl = model.imgUrl;
-        return new Car(id, Model, Mileage, Color, Price, Year, Description, imgUrl);
+        return new Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl);
     };
     return Car;
 }());

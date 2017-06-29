@@ -26,12 +26,12 @@ export class CarsController<T> implements BaseController<Car> {
     GetAll(req, res) {
         return this.data.getAll()
             .then((cars: Car[]) => {
-                let Models: ["volvo", "BMV", "mercedes", "Audi"];
+                let makes = ["Acura", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Bugatti", "Buick", "Cadillac", "Chevrolet8", "Chrysler", "Citroen", "Dodge", "Ferrari", "Fiat", "Ford", "Geely", "General Motors", "GMC", "Honda", "Hyundai", "Infiniti", "Jaguar", "Jeep", "Kia", "Koenigsegg", "Lamborghini", "Land Rover", "Lexus", "Maserati", "Mazda", "McLaren", "Mercedes- Benz", "Mini2", "Mitsubishi", "Nissan", "Pagani", "Peugeot", "Porsche", "Ram", "Renault", "Rolls Royce", "Saab", "Subaru", "Suzuki", "TATA Motors", "Tesla", "Toyota", "Volkswagen", "Volvo"]
                 let prices: [1000, 2000, 3000, 4000, 5000, 6000];
                 const model = {
                     model: cars,
                     user: req.user,
-                    Models: ["volvo", "BMV", "mercedes", "Audi"],
+                    makes: makes,
                     prices: [1000, 2000, 3000, 4000, 5000, 6000]
                 };
 
@@ -40,7 +40,11 @@ export class CarsController<T> implements BaseController<Car> {
     }
 
     getForm(req, res) {
-        return res.render("cars/car-add");
+        let makes = ["Acura", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Bugatti", "Buick", "Cadillac", "Chevrolet8", "Chrysler", "Citroen", "Dodge", "Ferrari", "Fiat", "Ford", "Geely", "General Motors", "GMC", "Honda", "Hyundai", "Infiniti", "Jaguar", "Jeep", "Kia", "Koenigsegg", "Lamborghini", "Land Rover", "Lexus", "Maserati", "Mazda", "McLaren", "Mercedes- Benz", "Mini2", "Mitsubishi", "Nissan", "Pagani", "Peugeot", "Porsche", "Ram", "Renault", "Rolls Royce", "Saab", "Subaru", "Suzuki", "TATA Motors", "Tesla", "Toyota", "Volkswagen", "Volvo"]
+        let model = {
+            model: makes
+        }
+        return res.render("cars/car-add", model);
     }
 
     getById(req, res) {
@@ -57,10 +61,19 @@ export class CarsController<T> implements BaseController<Car> {
     }
     search(req, res) {
         let body = req.body;
-        return this.data.find(body.Model, body.Year)
-            .then(cars => {
+        return this.data.getAll()
+            .then(cars1 => {
+                let car: Car[] = cars1.filter((car1) =>
+                    (car1.Makes === body.Makes || body.Makes === "All") && +car1.Price >= body.Price1 && +car1.Year >= body.Year && +car1.Price <= body.Price2
+                );
+                // .filter((car2) =>
+                //     +car2.Price >= body.Price1
+                // )
+                // .filter((car3) =>
+                //     +car3.Price <= body.Price2
+                // );
                 let model = {
-                    model: cars
+                    model: car
                 };
                 res.render("cars/car-search", model);
             });

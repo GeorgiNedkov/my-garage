@@ -53,7 +53,7 @@ Promise.resolve()
 })
     .then(function () {
     app.set("view engine", "pug");
-    app.set("views", "src/app/views");
+    app.set("views", path.join(__dirname, "app", "views"));
 })
     .then(function () {
     app.useMiddleware(function (req, res, next) {

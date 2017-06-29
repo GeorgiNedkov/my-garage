@@ -1,18 +1,18 @@
-mixin nav 
+mixin nav
     .nav
-        ul
+        ul(class="nav nav-tabs" style='padding-left:33%')
             li
-                a(href="/") 
+                a(href="/" style='color: black;') 
                     | Home
             li
-                a(href="/cars/all")
+                a(href="/cars/all" style='color: black;')
                     | All cars
             li
                 a(href="/cars/add")
                     | Add car
             if user
                 li
-                    a(href="/profile")
+                    a(href="/profile" )
                         =user.username
                 li
                     form(action="/auth/logout" method="POST")
