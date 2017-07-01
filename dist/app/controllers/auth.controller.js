@@ -18,6 +18,7 @@ var AuthController = (function () {
     AuthController.prototype.loginUser = function (req, res) {
         if (req.isAuthenticated()) {
             res.redirect("/");
+            console.log(req.user.username);
         }
         else {
             res.redirect("/login");

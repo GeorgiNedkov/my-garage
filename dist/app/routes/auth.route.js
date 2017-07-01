@@ -18,7 +18,7 @@ var AuthRoute = (function () {
             _this.controller.getRegisterForm(req, res);
         })
             .post("/auth/login", passport.authenticate("local"), function (req, res) {
-            return _this.controller.loginUser(req, res);
+            res.render("layout/after.login.pug", { user: req.user });
         })
             .post("/auth/register", function (req, res) {
             return _this.controller.registerUser(req, res);

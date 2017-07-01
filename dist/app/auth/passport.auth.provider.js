@@ -20,7 +20,7 @@ var PassportAuthProvider = (function () {
             secret: this.secret,
             resave: true,
             saveUninitialized: true,
-            cookie: { maxAge: 1000 * 60 },
+            cookie: { maxAge: 1000 * 60 * 60 },
             store: this.storeFactory.getStore()
         }));
         app.useMiddleware(passport.initialize());
