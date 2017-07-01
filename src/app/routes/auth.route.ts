@@ -23,7 +23,7 @@ export class AuthRoute implements BaseRoute {
                 this.controller.getRegisterForm(req, res);
             })
             .post("/auth/login", passport.authenticate("local"), (req, res) => {
-                return this.controller.loginUser(req, res);
+                res.render("layout/after.login.pug", { user: req.user });
             })
             .post("/auth/register", (req, res) => {
                 return this.controller.registerUser(req, res);
