@@ -69,8 +69,8 @@ Promise.resolve()
         app = new ExpressApplication();
         logger = new Logger();
 
-        // storeFactory = new MongoDbStoreFactory(db);
-        storeFactory = new RedisStoreFactory(redisConnectionString);
+        storeFactory = new MongoDbStoreFactory(db);
+        // storeFactory = new RedisStoreFactory(redisConnectionString);
     })
 
     // add view engine

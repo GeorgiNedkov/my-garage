@@ -3,7 +3,7 @@ exports.__esModule = true;
 var string_validator_1 = require("./app/validators/string.validator");
 var auth_controller_1 = require("./app/controllers/auth.controller");
 var encryptor_1 = require("./app/utils/encryptor");
-var redis_store_factory_1 = require("./app/stores/redis.store.factory");
+var mongodb_store_factory_1 = require("./app/stores/mongodb.store.factory");
 var auth_route_1 = require("./app/routes/auth.route");
 var user_model_1 = require("./app/models/user.model");
 var passport_auth_provider_1 = require("./app/auth/passport.auth.provider");
@@ -48,8 +48,8 @@ Promise.resolve()
     carsData = new mongodb_data_1.MongoDbData(db, cars_1.Car, cars_1.Car);
     app = new ExpressApplication_1.ExpressApplication();
     logger = new logger_1.Logger();
-    // storeFactory = new MongoDbStoreFactory(db);
-    storeFactory = new redis_store_factory_1.RedisStoreFactory(config_1.redisConnectionString);
+    storeFactory = new mongodb_store_factory_1.MongoDbStoreFactory(db);
+    // storeFactory = new RedisStoreFactory(redisConnectionString);
 })
     .then(function () {
     app.set("view engine", "pug");
