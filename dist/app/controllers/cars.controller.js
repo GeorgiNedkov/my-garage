@@ -7,7 +7,6 @@ var CarsController = (function () {
     CarsController.prototype.getAll = function (req, res) {
         return this.data.getAll()
             .then(function (cars) {
-            console.log(req.user);
             var model = {
                 model: cars,
                 user: req.user
@@ -18,7 +17,6 @@ var CarsController = (function () {
     CarsController.prototype.GetAll = function (req, res) {
         return this.data.getAll()
             .then(function (cars) {
-            console.log(req.user);
             var makes = ["Acura", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Bugatti", "Buick", "Cadillac", "Chevrolet8", "Chrysler", "Citroen", "Dodge", "Ferrari", "Fiat", "Ford", "Geely", "General Motors", "GMC", "Honda", "Hyundai", "Infiniti", "Jaguar", "Jeep", "Kia", "Koenigsegg", "Lamborghini", "Land Rover", "Lexus", "Maserati", "Mazda", "McLaren", "Mercedes- Benz", "Mini2", "Mitsubishi", "Nissan", "Pagani", "Peugeot", "Porsche", "Ram", "Renault", "Rolls Royce", "Saab", "Subaru", "Suzuki", "TATA Motors", "Tesla", "Toyota", "Volkswagen", "Volvo"];
             var prices1 = [1000, 2000, 3000, 4000, 5000, 7500, 10000, 15000, 20000, 30000, 40000, 50000];
             var prices2 = [50000, 40000, 30000, 20000, 15000, 10000, 7500, 5000, 4000, 3000, 2000, 1000];
@@ -44,7 +42,6 @@ var CarsController = (function () {
         var id = req.params.id;
         return this.data.getById(id)
             .then(function (car) {
-            console.log(req.user);
             var model = {
                 model: car,
                 user: req.user
@@ -65,7 +62,6 @@ var CarsController = (function () {
             // .filter((car3) =>
             //     +car3.Price <= body.Price2
             // );
-            console.log(req.user);
             var model = {
                 model: car,
                 user: req.user
@@ -73,8 +69,28 @@ var CarsController = (function () {
             res.render("cars/car-search", model);
         });
     };
+    CarsController.prototype.profileCars = function (req, res) {
+        return this.data.getAll()
+            .then(function (cars1) {
+            var car = cars1.filter(function (car1) { return car1.userID === "\"" + req.user.id + "\""; });
+            for (var _i = 0, cars1_1 = cars1; _i < cars1_1.length; _i++) {
+                var car1 = cars1_1[_i];
+                console.log(car1.userID + " === " + req.user.id);
+            }
+            ;
+            console.log(car);
+            var model = {
+                model: car,
+                user: req.user
+            };
+            res.render("user/profile", model);
+        });
+    };
     CarsController.prototype.add = function (req, res) {
         var body = req.body;
+        var userID = JSON.stringify(req.user.id);
+        body["userID"] = userID;
+        console.log(userID);
         return this.data.add(body)
             .then(function (car) {
             res.redirect("/cars/all");

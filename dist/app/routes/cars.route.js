@@ -14,6 +14,7 @@ var CarsRoute = (function () {
             .get("/cars/add", function (req, res) { return _this.controller.getForm(req, res); })
             .get("/cars/:id", function (req, res) { return _this.controller.getById(req, res); })
             .get("/", function (req, res) { return _this.controller.GetAll(req, res); })
+            .get("/profile", function (req, res) { return _this.controller.profileCars(req, res); })
             .post("/cars/car-search", function (req, res) { return _this.controller.search(req, res); })
             .post("/cars", function (req, res) { return _this.controller.add(req, res); });
     };

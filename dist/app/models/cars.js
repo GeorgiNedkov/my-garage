@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var Car = (function () {
-    function Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl) {
+    function Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl, userID) {
         this.id = id;
         this.Makes = Makes;
         this.Mileage = Mileage;
@@ -10,6 +10,7 @@ var Car = (function () {
         this.Year = Year;
         this.Description = Description;
         this.imgUrl = imgUrl;
+        this.userID = userID;
     }
     Car.toModel = function (obj) {
         return {
@@ -19,7 +20,8 @@ var Car = (function () {
             Price: obj.Price,
             Year: obj.Year,
             Description: obj.Description,
-            imgUrl: obj.imgUrl
+            imgUrl: obj.imgUrl,
+            userID: obj.userID
         };
     };
     Car.fromModel = function (model) {
@@ -31,7 +33,8 @@ var Car = (function () {
         var Year = model.Year;
         var Description = model.Description;
         var imgUrl = model.imgUrl;
-        return new Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl);
+        var userID = model.userID;
+        return new Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl, userID);
     };
     return Car;
 }());

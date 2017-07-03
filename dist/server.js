@@ -67,7 +67,7 @@ Promise.resolve()
     app.useMiddleware(logger.getLoggerMiddleware());
 })
     .then(function () {
-    var staticDir = path.join(__dirname, "../build", "app", "public");
+    var staticDir = path.join(__dirname, "../dist", "app", "public");
     app.addStaticResource("/static", staticDir);
     var libsDir = path.join(__dirname, "../node_modules");
     app.addStaticResource("/libs", libsDir);
