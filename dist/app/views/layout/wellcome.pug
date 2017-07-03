@@ -27,9 +27,10 @@ block content
                 | €
         .form-group
             label
-                | Year:
-                input(name="Year")
-
+                |Production Date                       
+                nav
+                    |after:
+                    input(type="number" name="Year" min="1900" max="2070" value="2000")
         button
             | Search
 

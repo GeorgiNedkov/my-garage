@@ -7,6 +7,6 @@ block content
                 a(href="/cars/" + car.id)
                     if car.imgUrl
                         img(width=100 src=car.imgUrl)
-                    //- else
-                    //-     img(width=100 height=66 src="http://www.bmw.co.uk/vc/resources/img/no_img.png")
+                    else
+                        img(width=100 height=66 src="http://www.bmw.co.uk/vc/resources/img/no_img.png")
                     span=car.Makes
