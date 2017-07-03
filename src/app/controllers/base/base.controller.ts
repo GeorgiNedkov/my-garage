@@ -4,5 +4,6 @@ export interface BaseController<T> {
     getById(req, res);
     add(req, res);
     getForm(req, res);
-    search(req, res)
+    search(req, res);
+    profileCars(req, res);
 }

@@ -7,8 +7,8 @@ export class Car {
     Year: number;
     Description: string;
     imgUrl: string;
-
-    constructor(id: string, Makes: string, Mileage: number, Color: string, Price: number, Year: number, Description: string, imgUrl: string) {
+    userID: string;
+    constructor(id: string, Makes: string, Mileage: number, Color: string, Price: number, Year: number, Description: string, imgUrl: string, userID: string) {
         this.id = id;
         this.Makes = Makes;
         this.Mileage = Mileage;
@@ -17,6 +17,7 @@ export class Car {
         this.Year = Year;
         this.Description = Description;
         this.imgUrl = imgUrl;
+        this.userID = userID;
     }
 
     static toModel(obj: Car): any {
@@ -27,7 +28,8 @@ export class Car {
             Price: obj.Price,
             Year: obj.Year,
             Description: obj.Description,
-            imgUrl: obj.imgUrl
+            imgUrl: obj.imgUrl,
+            userID: obj.userID
         };
     }
 
@@ -40,6 +42,7 @@ export class Car {
         let Year = model.Year;
         let Description = model.Description;
         let imgUrl = model.imgUrl;
-        return new Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl);
+        let userID = model.userID;
+        return new Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl, userID);
     }
 }

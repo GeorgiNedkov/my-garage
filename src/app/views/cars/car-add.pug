@@ -1,6 +1,7 @@
 extends ../_layout
 
 block content
+    link(rel="stylesheet", href="/static/js/validator.js")
     form(action="/cars" method="POST" style='margin-bottom: 20px; border: 1px solid #ddd; padding: 20px; width: 50%; margin: 0 auto 20px;')
         .form-group
             label
@@ -29,7 +30,12 @@ block content
         .form-group
             label
                 |Image:
-                input(name="imgUrl" multiple)
+                input(name="imgUrl")
                                 //- input(name="imgUrl") 
+        .form-group
+            label
+                |Telephone number:
+                input(name="Telephone")
+                                //- input(name="imgUrl")        
         button
             | Save

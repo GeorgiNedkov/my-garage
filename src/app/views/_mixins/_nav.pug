@@ -7,15 +7,12 @@ mixin nav
             li
                 a(href="/cars/all" style='color: black;')
                     | All cars
-            li
-                a(href="/cars/add" style='color: black;')
-                    | Add car
             if(user)
                 li
+                    a(href="/cars/add" style='color: black;')
+                        | Add car
+                li
                     a(href="/profile" )=user.username
-                form(action="/auth/logout" method="POST" style='color: black;')
-                    button
-                        | Logout
             else                        
                 li
                     a(href="/auth/register" style='color: black;') 

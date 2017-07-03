@@ -94,7 +94,7 @@ Promise.resolve()
 
     // add static files
     .then(() => {
-        const staticDir = path.join(__dirname, "../build", "app", "public");
+        const staticDir = path.join(__dirname, "../dist", "app", "public");
         app.addStaticResource("/static", staticDir);
         const libsDir = path.join(__dirname, "../node_modules");
         app.addStaticResource("/libs", libsDir);

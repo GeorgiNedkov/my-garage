@@ -27,7 +27,6 @@ export class AuthController implements BaseAuthController {
     public loginUser(req, res) {
         if (req.isAuthenticated()) {
             res.redirect("/");
-            console.log(req.user.username);
         } else {
             res.redirect("/login");
         }

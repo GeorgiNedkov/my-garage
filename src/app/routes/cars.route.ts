@@ -19,6 +19,7 @@ export class CarsRoute implements BaseRoute {
             .get("/cars/add", (req, res) => this.controller.getForm(req, res))
             .get("/cars/:id", (req, res) => this.controller.getById(req, res))
             .get("/", (req, res) => this.controller.GetAll(req, res))
+            .get("/profile", (req, res) => this.controller.profileCars(req, res))
             .post("/cars/car-search", (req, res) => this.controller.search(req, res))
             .post("/cars", (req, res) => this.controller.add(req, res));
 
