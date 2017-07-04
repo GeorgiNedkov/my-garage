@@ -1,0 +1,46 @@
+extends ../_layout
+
+
+block content
+    h1(style='margin-bottom: 20px; border: 1px solid #ddd; padding: 20px; width: 50%; margin: 0 auto 20px;') Find your new car
+    
+    form(action="/cars/car-search" method="POST" style='margin-bottom: 20px; border: 1px solid #ddd; padding: 20px; width: 50%; margin: 0 auto 20px;')
+        .form-group
+            label
+                | Makes:
+                select(name="Makes")
+                    option
+                        |All
+                    each mod in makes
+                        option=mod
+        .form-group
+            label
+                | Price:
+                select(name="Price1")
+                    each price in prices1
+                        option=price
+                    
+                |-
+                select(name="Price2")
+                    each price in prices2
+                        option=price
+                | €
+        .form-group
+            label
+                |Production Date                       
+                nav
+                    |after:
+                    input(type="number" name="Year" min="1900" max="2070" value="2000")
+        button
+            | Search
+    #cars-container
+
+    //- ul.list
+    //-     each car in model
+    //-         li.car-item
+    //-             a(href="/cars/" + car.id)
+    //-                 if car.imgUrl
+    //-                     img(width=100 src=car.imgUrl)
+    //-                 else
+    //-                     img(width=100 src="http://www.bmw.co.uk/vc/resources/img/no_img.png")
+    //-                 span=car.Makes

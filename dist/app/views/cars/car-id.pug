@@ -1,0 +1,36 @@
+extends ../_layout
+block content  
+    a.car-item
+        a(href="/cars/" + model.id)
+            if model.imgUrl
+                img( src=model.imgUrl ,class="car-img-id")
+            else
+                img(src="http://librosebooks.org/img/xggS7:XXBBB.vVq0xE.W8C.ClXCi0EVXWVgVu8vXS180jWgXWVWxiXtXECVviXc9nl9nnXF0aP3iVkcc9290n30Mi9ak302PtcMiF9XEXCXECVvi_ttM9_t_M2M2t.fSv.png",class="car-img-id")
+        ul(class="center list-group-item list-unstyled")
+                li
+                    |Makes:
+                    a(style=" color: black")=model.Makes
+                | 
+                li
+                    |Mileage:
+                    a(style=" color: black")=model.Mileage
+                | 
+                li
+                    |Price:
+                    a(style=" color: black")=model.Price
+                | 
+                li
+                    |Year:
+                    a(style=" color: black")=model.Year
+                | 
+        ul(class="center list-unstyled")
+            li.center-text
+                |uploaded by:
+                a(href="/profile/"+model.userID class="center_text info")=model.userName
+            li.center-text
+                |telephone:
+                a(href="/profile" class="center_text info" style=" color: black")=model.Telephone
+        ul(class="center list-group-item list-unstyled")
+            li
+                |Description:
+                a(style=" color: black")=model.description

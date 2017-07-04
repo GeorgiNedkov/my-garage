@@ -1,0 +1,11 @@
+extend ../_layout
+block content
+    form(action="/auth/login" method="POST" style='margin-bottom: 20px; border: 1px solid #ddd; padding: 20px; width: 50%; margin: 0 auto 20px;')
+        label
+            | Username:
+            input(name="username")
+        label
+            | Password:
+            input(name="password" type="password")
+        button.btn
+            | Login
