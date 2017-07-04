@@ -17,8 +17,9 @@ export class ProfileRoute implements BaseRoute {
         this.router
             .get("/profile/:id", (req, res) => this.controller.profileCars(req, res))
             .get("/profile/getall/cars/from/db/by/ajax", (req, res) => this.controller.getAll(req, res))
-            .get("/profilemassage/ajax/massage", (req, res) => this.controller.GetAll(req, res));
-
+            .get("/profilemassage/ajax/massage", (req, res) => this.controller.GetAll(req, res))
+            .get("/searchajac/search/search/search/search", (req, res) => this.controller.search(req, res))
+            .get("/searchajac/img/in/space/but", (req, res) => this.controller.getById(req, res));
     }
 
     public getRouter(): any {

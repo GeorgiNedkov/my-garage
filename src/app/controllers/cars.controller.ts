@@ -87,7 +87,7 @@ export class CarsController<T> implements BaseController<Car> {
     profileCars(req, res) {
         return this.data.getAll()
             .then((cars1: Car[]) => {
-                let car: Car[] = cars1.filter((car1) => car1.userID === req.user.id);
+                let car: Car[] = cars1.filter((car1) => car1.userID == req.user.id);
                 let model = {
                     model: car,
                     user: req.user

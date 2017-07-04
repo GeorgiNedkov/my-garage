@@ -32,18 +32,12 @@ export class ProfileController<T> implements BaseController<Car> {
     }
 
     getById(req, res) {
+        let url = "https://uau.bg/7926-12680-home/frantic-stamper-fra-die-09164-race-car.jpg";
+        res.send(url);
 
     }
     search(req, res) {
-        let id = req.params.id;
-        return this.carsdata.getAll()
-            .then((cars1: Car[]) => {
-                this.userdata.getById(id)
-                    .then((user: User) => {
-                        let cars: Car[] = cars1.filter((car1) => car1.userID == user.id);
-                        res.send(cars);
-                    });
-            });
+
     }
 
     profileCars(req, res) {
@@ -63,6 +57,7 @@ export class ProfileController<T> implements BaseController<Car> {
                             user: req.user
                         };
                         res.render("user/user-id", model);
+                        // res.send(cars);
                     });
             });
     }

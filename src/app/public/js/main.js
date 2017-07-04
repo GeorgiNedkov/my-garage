@@ -19,6 +19,10 @@ $(function () {
                         .append($("<p>")
                             .addClass("car-Mileage")
                             .html(car.Price + "€"))
+                        .append($("<h5>")
+                            .html(car.location)
+                            .addClass("car-Mileage")
+                        )
                         .append($("<img>")
                             .addClass("car-img")
                             .attr('src', car.imgUrl))
@@ -31,10 +35,7 @@ $(function () {
                                 .html(car.Mileage + "km")
                                 .addClass("car-Mileage")
                             ).addClass("center-text"))
-                        .append($("<nav>")
-                            .html(car.location)
-                            .addClass("car-Mileage")
-                        )
+
                     ).appendTo($list).addClass("ul-cars")
 
             });
@@ -52,4 +53,25 @@ $(function () {
         }
     });
 
+    var $nav = $("#1");
+    $.ajax({
+        success: function () {
+            $("<ul>").addClass("nav nav-tabs navbar-static-top my-nav")
+                .append($("<li/>")
+                    .append($("<a>")
+                        .attr("href", "/")
+                        .addClass("black")
+                        .html("Home")
+                    )
+                )
+                .append($("<li/>")
+                    .append($("<a>")
+                        .attr("href", "/cars/all")
+                        .addClass("black")
+                        .html("All cars")
+                    )
+                )
+                .appendTo($nav);
+        }
+    });
 });

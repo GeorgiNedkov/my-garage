@@ -1,6 +1,22 @@
 mixin nav
     .nav
-        ul(class="nav nav-tabs navbar-static-top" style='    margin: auto;    width: 50%;   padding-left: 13%; ')
+                    //- #nav
+                    //- ul(class="nav nav-tabs navbar-static-top my-nav" id=1)
+                    //-     if(user)
+                    //-         li
+                    //-             a(href="/cars/add" style='color: black;')
+                    //-                 | Add car
+                    //-         li
+                    //-             a(href="/profile" style='color: black;')=user.username
+                    //-     else                        
+                    //-         li
+                    //-             a(href="/auth/register" style='color: black;') 
+                    //-                 | Register
+                    //-         li
+                    //-             a(href="/auth/login" style='color: black;')
+                    //-                 | Login
+        
+        ul(class="nav nav-tabs navbar-static-top my-nav" )
             li
                 a(href="/" style='color: black;') 
                     | Home

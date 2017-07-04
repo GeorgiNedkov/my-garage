@@ -53,4 +53,16 @@ car-ul {
   padding: 20px;
   width: 50%;
   margin: 0 auto 20px;
+  border-bottom: 0 solid #ddd;
+  background-color: #eeeeee;
+}
+
+.my-nav {
+  margin: auto;
+  width: 50%;
+  padding-left: 13%;
+}
+
+.black {
+  color: black;
 }
