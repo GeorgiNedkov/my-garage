@@ -11,6 +11,7 @@ var CarsController = (function () {
                 model: cars,
                 user: req.user
             };
+            // res.send(cars);
             return res.render("cars/car-all", model);
         });
     };
@@ -72,13 +73,7 @@ var CarsController = (function () {
     CarsController.prototype.profileCars = function (req, res) {
         return this.data.getAll()
             .then(function (cars1) {
-            var car = cars1.filter(function (car1) { return car1.userID === "\"" + req.user.id + "\""; });
-            for (var _i = 0, cars1_1 = cars1; _i < cars1_1.length; _i++) {
-                var car1 = cars1_1[_i];
-                console.log(car1.userID + " === " + req.user.id);
-            }
-            ;
-            console.log(car);
+            var car = cars1.filter(function (car1) { return car1.userID === req.user.id; });
             var model = {
                 model: car,
                 user: req.user
@@ -89,7 +84,13 @@ var CarsController = (function () {
     CarsController.prototype.add = function (req, res) {
         var body = req.body;
         var userID = JSON.stringify(req.user.id);
+        var userName = JSON.stringify(req.user.username);
         body["userID"] = userID;
+        body.userID = body.userID.replace("\"", "");
+        body.userID = body.userID.replace("\"", "");
+        body["userName"] = userName;
+        body.userName = body.userName.replace("\"", "");
+        body.userName = body.userName.replace("\"", "");
         console.log(userID);
         return this.data.add(body)
             .then(function (car) {

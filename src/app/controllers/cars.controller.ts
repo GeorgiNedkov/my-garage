@@ -18,7 +18,7 @@ export class CarsController<T> implements BaseController<Car> {
                     model: cars,
                     user: req.user
                 };
-
+                // res.send(cars);
                 return res.render("cars/car-all", model);
             });
     }
@@ -87,9 +87,7 @@ export class CarsController<T> implements BaseController<Car> {
     profileCars(req, res) {
         return this.data.getAll()
             .then((cars1: Car[]) => {
-                let car: Car[] = cars1.filter((car1) => car1.userID === "\"" + req.user.id + "\"");
-                for (let car1 of cars1) { console.log(`${car1.userID} === ${req.user.id}`); };
-                console.log(car);
+                let car: Car[] = cars1.filter((car1) => car1.userID === req.user.id);
                 let model = {
                     model: car,
                     user: req.user
@@ -101,11 +99,18 @@ export class CarsController<T> implements BaseController<Car> {
     add(req, res) {
         let body = req.body;
         let userID = JSON.stringify(req.user.id);
+        let userName = JSON.stringify(req.user.username)
         body["userID"] = userID;
+        body.userID = body.userID.replace("\"", "");
+        body.userID = body.userID.replace("\"", "");
+        body["userName"] = userName;
+        body.userName = body.userName.replace("\"", "");
+        body.userName = body.userName.replace("\"", "");
         console.log(userID);
         return this.data.add(body)
             .then(car => {
                 res.redirect("/cars/all");
             });
     }
+
 }

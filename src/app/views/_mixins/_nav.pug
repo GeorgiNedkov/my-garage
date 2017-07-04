@@ -1,6 +1,6 @@
 mixin nav
     .nav
-        ul(class="nav nav-tabs" style='padding-left:33%')
+        ul(class="nav nav-tabs navbar-static-top" style='    margin: auto;    width: 50%;   padding-left: 13%; ')
             li
                 a(href="/" style='color: black;') 
                     | Home
@@ -12,7 +12,7 @@ mixin nav
                     a(href="/cars/add" style='color: black;')
                         | Add car
                 li
-                    a(href="/profile" )=user.username
+                    a(href="/profile" style='color: black;')=user.username
             else                        
                 li
                     a(href="/auth/register" style='color: black;') 

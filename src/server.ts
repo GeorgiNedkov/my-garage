@@ -27,6 +27,8 @@ import { MongoDbData } from "./app/data/mongodb.data";
 import { Car } from "./app/models/cars";
 import { CarsController } from "./app/controllers/cars.controller";
 import { CarsRoute } from "./app/routes/cars.route";
+import { ProfileController } from "./app/controllers/profile.controller";
+import { ProfileRoute } from './app/routes/profile.route';
 
 let logger;
 
@@ -42,6 +44,7 @@ let authProvider: BaseAuthProvider;
 
 let carsController: BaseController<Car>;
 let authController: BaseAuthController;
+let profileController: BaseController<Car>;
 
 let encryptor = new Encryptor();
 
@@ -76,7 +79,7 @@ Promise.resolve()
     // add view engine
     .then(() => {
         app.set("view engine", "pug");
-        app.set("views", path.join(__dirname, "app", "views"));
+        app.set("views", path.join(__dirname, "../src", "app", "views"));
     })
 
     // add middlewares
@@ -94,7 +97,7 @@ Promise.resolve()
 
     // add static files
     .then(() => {
-        const staticDir = path.join(__dirname, "../dist", "app", "public");
+        const staticDir = path.join(__dirname, "../src", "app", "public");
         app.addStaticResource("/static", staticDir);
         const libsDir = path.join(__dirname, "../node_modules");
         app.addStaticResource("/libs", libsDir);
@@ -112,6 +115,7 @@ Promise.resolve()
         carsController = new CarsController(carsData);
         let validator = validators.getStringValidator(USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH, USERNAME_VALID_CHARS);
         authController = new AuthController(usersData, validator);
+        profileController = new ProfileController(carsData, usersData);
     })
 
     // add routes
@@ -120,16 +124,18 @@ Promise.resolve()
         let carsRoute = new CarsRoute(carsController);
         app.addRoute(carsRoute);
 
+        let profileRoute = new ProfileRoute(profileController);
+        app.addRoute(profileRoute);
 
         let authRoute = new AuthRoute(authController);
         app.addRoute(authRoute);
-        ;
+
     })
 
     // start application
     .then(() => {
         return app.start(port);
-    }).catch((Error) => { console.log(Error) })
+    }).catch((Error) => { console.log(Error); })
     .then(() => {
         console.log(`Server running at :${port}`);
     });

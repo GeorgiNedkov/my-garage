@@ -2,34 +2,41 @@ export class Car {
     id: string;
     Makes: string;
     Mileage: number;
-    Color: string;
+    location: string;
     Price: number;
     Year: number;
     Description: string;
     imgUrl: string;
+    Telephone: number;
     userID: string;
-    constructor(id: string, Makes: string, Mileage: number, Color: string, Price: number, Year: number, Description: string, imgUrl: string, userID: string) {
+    userName: string;
+
+    constructor(id: string, Makes: string, Mileage: number, location: string, Price: number, Year: number, Description: string, imgUrl: string, Telephone: number, userID: string, userName: string) {
         this.id = id;
         this.Makes = Makes;
         this.Mileage = Mileage;
-        this.Color = Color;
+        this.location = location;
         this.Price = Price;
         this.Year = Year;
         this.Description = Description;
         this.imgUrl = imgUrl;
+        this.Telephone = Telephone;
         this.userID = userID;
+        this.userName = userName;
     }
 
     static toModel(obj: Car): any {
         return {
             Makes: obj.Makes,
             Mileage: obj.Mileage,
-            Color: obj.Color,
+            location: obj.location,
             Price: obj.Price,
             Year: obj.Year,
             Description: obj.Description,
             imgUrl: obj.imgUrl,
-            userID: obj.userID
+            Telephone: obj.Telephone,
+            userID: obj.userID,
+            userName: obj.userName
         };
     }
 
@@ -37,12 +44,14 @@ export class Car {
         let id = model.id || model._id;
         let Makes = model.Makes;
         let Mileage = model.Mileage;
-        let Color = model.Color;
+        let location = model.location;
         let Price = model.Price;
         let Year = model.Year;
         let Description = model.Description;
         let imgUrl = model.imgUrl;
+        let Telephone = model.Telephone;
         let userID = model.userID;
-        return new Car(id, Makes, Mileage, Color, Price, Year, Description, imgUrl, userID);
+        let userName = model.userName;
+        return new Car(id, Makes, Mileage, location, Price, Year, Description, imgUrl, Telephone, userID, userName);
     }
 }

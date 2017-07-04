@@ -31,6 +31,7 @@ export class AuthRoute implements BaseRoute {
             .post("/auth/logout", (req, res) => {
                 return this.controller.logoutUser(req, res);
             });
+
     }
 
 

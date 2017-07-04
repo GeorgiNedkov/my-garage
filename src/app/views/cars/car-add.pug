@@ -1,8 +1,8 @@
 extends ../_layout
 
 block content
-    link(rel="stylesheet", href="/static/js/validator.js")
-    form(action="/cars" method="POST" style='margin-bottom: 20px; border: 1px solid #ddd; padding: 20px; width: 50%; margin: 0 auto 20px;')
+    //- link(rel="stylesheet", href="/static/js/validator.js")
+    form(action="/cars" method="POST" id="signForm" style='margin-bottom: 20px; border: 1px solid #ddd; padding: 20px; width: 50%; margin: 0 auto 20px;')
         .form-group
             label
                 | Makes:
@@ -16,17 +16,21 @@ block content
                 |km
         .form-group
             label
+                | location:
+                input(name="location")  
+        .form-group
+            label
                 | Price:
                 input(name="Price")
                 |€
         .form-group
             label
                 | Year:
-                input(name="Year")
+                input(name="Year" )
         .form-group
             label
                 | description:
-                textarea(name="description" width=100 height=100)  
+                textarea(name="Description" width=100 height=100)  
         .form-group
             label
                 |Image:

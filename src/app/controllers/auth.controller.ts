@@ -65,4 +65,5 @@ export class AuthController implements BaseAuthController {
         req.logOut();
         res.redirect("/");
     }
+
 }

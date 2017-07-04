@@ -1,34 +1,36 @@
-link(rel="stylesheet", href="/static/css/my.css")
-block content
-   
-a.car-item
-    a(href="/cars/" + model.id)
-        if model.imgUrl
-            img(width=100 src=model.imgUrl)
-        else
-            //- img(width=100 src="http://librosebooks.org/img/xggS7:XXBBB.vVq0xE.W8C.ClXCi0EVXWVgVu8vXS180jWgXWVWxiXtXECVviXc9nl9nnXF0aP3iVkcc9290n30Mi9ak302PtcMiF9XEXCXECVvi_ttM9_t_M2M2t.fSv.png")
-    ul.list-group-item
-            li
-                |Makes:
-                a=model.Makes
-            | 
-            li
-                |Mileage:
-                a=model.Mileage
-            | 
-            li
-                |Color:
-                a=model.Color
-            | 
-            li
-                |Price:
-                a=model.Price
-            | 
-            li
-                |Year:
-                a=model.Year
-            | 
+extends ../_layout
+block content  
+    a.car-item
+        a(href="/cars/" + model.id)
+            if model.imgUrl
+                img( src=model.imgUrl ,class="car-img-id")
+            else
+                img(src="http://librosebooks.org/img/xggS7:XXBBB.vVq0xE.W8C.ClXCi0EVXWVgVu8vXS180jWgXWVWxiXtXECVviXc9nl9nnXF0aP3iVkcc9290n30Mi9ak302PtcMiF9XEXCXECVvi_ttM9_t_M2M2t.fSv.png",class="car-img-id")
+        ul(class="center list-group-item list-unstyled")
+                li
+                    |Makes:
+                    a=model.Makes
+                | 
+                li
+                    |Mileage:
+                    a=model.Mileage
+                | 
+                li
+                    |Price:
+                    a=model.Price
+                | 
+                li
+                    |Year:
+                    a=model.Year
+                | 
+        ul(class="center list-unstyled")
+            li.center-text
+                |uploaded by:
+                a(href="/profile/"+model.userID class="center_text info")=model.userName
+            li.center-text
+                |telephone:
+                a(href="/profile" class="center_text info")=model.Telephone
+        ul(class="center list-group-item list-unstyled")
             li
                 |Description:
-                a=model.Description
-            |
+                a=model.description

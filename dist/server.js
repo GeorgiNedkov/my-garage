@@ -18,6 +18,8 @@ var mongodb_data_1 = require("./app/data/mongodb.data");
 var cars_1 = require("./app/models/cars");
 var cars_controller_1 = require("./app/controllers/cars.controller");
 var cars_route_1 = require("./app/routes/cars.route");
+var profile_controller_1 = require("./app/controllers/profile.controller");
+var profile_route_1 = require("./app/routes/profile.route");
 var logger;
 var db;
 var storeFactory;
@@ -27,6 +29,7 @@ var app;
 var authProvider;
 var carsController;
 var authController;
+var profileController;
 var encryptor = new encryptor_1.Encryptor();
 var validators = {
     validators: {},
@@ -53,7 +56,7 @@ Promise.resolve()
 })
     .then(function () {
     app.set("view engine", "pug");
-    app.set("views", path.join(__dirname, "app", "views"));
+    app.set("views", path.join(__dirname, "../src", "app", "views"));
 })
     .then(function () {
     app.useMiddleware(function (req, res, next) {
@@ -67,7 +70,7 @@ Promise.resolve()
     app.useMiddleware(logger.getLoggerMiddleware());
 })
     .then(function () {
-    var staticDir = path.join(__dirname, "../dist", "app", "public");
+    var staticDir = path.join(__dirname, "../src", "app", "public");
     app.addStaticResource("/static", staticDir);
     var libsDir = path.join(__dirname, "../node_modules");
     app.addStaticResource("/libs", libsDir);
@@ -80,13 +83,15 @@ Promise.resolve()
     carsController = new cars_controller_1.CarsController(carsData);
     var validator = validators.getStringValidator(config_2.USERNAME_MIN_LENGTH, config_2.USERNAME_MAX_LENGTH, config_2.USERNAME_VALID_CHARS);
     authController = new auth_controller_1.AuthController(usersData, validator);
+    profileController = new profile_controller_1.ProfileController(carsData, usersData);
 })
     .then(function () {
     var carsRoute = new cars_route_1.CarsRoute(carsController);
     app.addRoute(carsRoute);
+    var profileRoute = new profile_route_1.ProfileRoute(profileController);
+    app.addRoute(profileRoute);
     var authRoute = new auth_route_1.AuthRoute(authController);
     app.addRoute(authRoute);
-    ;
 })
     .then(function () {
     return app.start(config_1.port);
