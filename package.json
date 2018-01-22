@@ -8,7 +8,7 @@
   "engines": {
     "node": "7.6.0"
   },
-  "author": "Doncho Minkov",
+  "author": "Georgi Nedkov",
   "license": "MIT",
   "dependencies": {
     "babel-preset-es2015": "^6.22.0",
